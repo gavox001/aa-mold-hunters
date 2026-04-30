@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@aamold-hunter/*": ["./packages/*/src"]
+      "@aa-mold-hunters/*": ["./packages/*/src"]
     }
   },
   "include": [],

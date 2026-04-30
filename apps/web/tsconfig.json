@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@aamold-hunter/ui": ["../../packages/ui/src"],
-      "@aamold-hunter/database": ["../../packages/database/src"]
+      "@aa-mold-hunters/ui": ["../../packages/ui/src"],
+      "@aa-mold-hunters/database": ["../../packages/database/src"]
     },
     "plugins": [
       {

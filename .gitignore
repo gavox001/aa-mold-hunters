@@ -70,3 +70,4 @@ docker-compose.yml
 # Setup scripts (local only)
 setup-db.ps1
 setup-db.sql
+.vercel

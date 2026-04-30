@@ -1,5 +1,5 @@
 {
-  "extends": "@aamold-hunter/typescript-config/base.json",
+  "extends": "@aa-mold-hunters/typescript-config/base.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

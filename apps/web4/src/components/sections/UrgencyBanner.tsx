@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { AlertTriangle, Phone, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 
 const DISMISS_KEY = 'web4:urgency-banner'
 const PHONE_NUMBER = '(305) 813-5922'
