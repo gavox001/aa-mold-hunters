@@ -1,4 +1,0 @@
-{
-  "framework": "nextjs",
-  "buildCommand": "cd ../.. && pnpm install && pnpm --filter @aamold-hunters/web4 build"
-}
