@@ -143,7 +143,7 @@ export function Hero() {
                 </Button>
               </a>
               <a href="#services" onClick={scrollToServices}>
-                <Button variant="outline" className="border-white/20 text-white hover:bg-white/10 px-8 py-7 text-base sm:text-lg font-semibold rounded-2xl transition-all touch-target-padded duration-300 backdrop-blur-sm">
+                <Button className="bg-slate-950/40 hover:bg-slate-950/60 text-white border border-white/10 backdrop-blur-md px-8 py-7 text-base sm:text-lg font-semibold rounded-2xl transition-all touch-target-padded duration-300 transform hover:-translate-y-1 shadow-xl">
                   View Our Services
                 </Button>
               </a>
@@ -268,8 +268,8 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0 opacity-100 translate-y-[2px]">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[60px] md:h-[100px] fill-secondary">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20 opacity-100 translate-y-[2px]">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" className="w-full h-[60px] md:h-[100px] fill-card">
           <path d="M0,0 C240,120 480,120 720,60 C960,0 1200,0 1440,60 L1440,120 L0,120 Z" />
         </svg>
       </div>

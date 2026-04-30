@@ -166,7 +166,7 @@ export function Services() {
                     width="400"
                     height="160"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/60 via-transparent to-transparent" />
                   <div className="absolute bottom-3 left-4">
                     <div className="w-10 h-10 rounded-lg bg-primary/90 flex items-center justify-center">
                       <service.icon className="w-5 h-5 text-primary-foreground" />

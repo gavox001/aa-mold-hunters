@@ -1,9 +1,26 @@
 import type { Metadata } from "next";
+import { DM_Sans, Lora, IBM_Plex_Mono } from "next/font/google";
 import "../globals.css";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Providers } from '@/components/Providers';
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const lora = Lora({
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'es' }];
@@ -46,7 +63,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className="min-h-screen bg-background text-foreground antialiased" suppressHydrationWarning>
+      <body className={`${dmSans.variable} ${lora.variable} ${ibmPlexMono.variable} min-h-screen bg-background text-foreground antialiased font-sans`} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           <Providers>
             {children}
