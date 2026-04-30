@@ -11,9 +11,9 @@ export function AboutUs() {
     <section
       id="about"
       ref={containerRef}
-      className="relative py-16 md:py-24 bg-secondary overflow-hidden"
+      className="relative py-16 md:py-24 bg-card overflow-hidden"
     >
-      <div className="absolute top-20 left-0 w-1/2 h-full bg-primary/5 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none" />
 
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="max-w-7xl mx-auto">
@@ -66,7 +66,7 @@ export function AboutUs() {
                   width="800"
                   height="500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-secondary/40 via-transparent to-transparent" />
               </div>
               {/* License Badge */}
               <div className="absolute -bottom-6 -left-6 bg-card border border-border p-6 rounded-xl shadow-lg">
