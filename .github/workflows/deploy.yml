@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Production
 
 on:
   push:
@@ -6,95 +6,17 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  group: production-deploy
+  cancel-in-progress: false
 
 env:
   NODE_VERSION: '22'
   PNPM_VERSION: '10.8.0'
 
 jobs:
-  deploy-api:
-    name: Deploy API
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: ${{ env.PNPM_VERSION }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Generate Prisma Client
-        run: pnpm db:generate
-
-      - name: Build API
-        run: pnpm --filter @aamold-hunter/api build
-
-      # Add your deployment steps here
-      # Examples:
-      # - Deploy to Railway/Render/Heroku
-      # - Deploy to AWS ECS/EC2
-      # - Deploy to DigitalOcean
-
-      - name: Deploy API (Placeholder)
-        run: echo "Deploy API to your platform"
-
   deploy-web:
-    name: Deploy Web
+    name: Deploy Web (Vercel)
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    needs: deploy-api
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: ${{ env.PNPM_VERSION }}
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Generate Prisma Client
-        run: pnpm db:generate
-
-      - name: Build Web
-        run: pnpm --filter @aamold-hunter/web build
-        env:
-          API_URL: ${{ secrets.API_URL }}
-
-      # Add your deployment steps here
-      # Examples:
-      # - Deploy to Vercel
-      # - Deploy to Netlify
-      # - Deploy to AWS CloudFront
-
-      - name: Deploy Web (Placeholder)
-        run: echo "Deploy Web to your platform"
-
-  migrate-db:
-    name: Migrate Database
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
     environment: production
     steps:
       - name: Checkout
@@ -112,7 +34,52 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Client
+        run: pnpm db:generate
+
+      - name: Build Web
+        run: pnpm --filter @aamold-hunter/web4 build
+        env:
+          NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
+
+      - name: Install Vercel CLI
+        run: pnpm add -g vercel@latest
+
+      - name: Pull Vercel Environment
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: apps/web4
+
+      - name: Build with Vercel
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: apps/web4
+
+      - name: Deploy to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+        working-directory: apps/web4
+
+  migrate-db:
+    name: Migrate Database
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Generate Prisma Client
         run: pnpm db:generate
