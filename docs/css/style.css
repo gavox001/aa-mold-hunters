@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   🎨 VARIABLES GLOBALES (EcoTrust Pro)
+   ======================================== */
+@layer base {
+  :root {
+    /* Colores principales */
+    --eco-primary: #2ECC71;
+    --eco-primary-dark: #1B5E20;
+    --eco-primary-light: #A5D6A7;
+    --eco-primary-hover: #27AE60;
+    
+    /* Ámbar persuasivo */
+    --amber-urgent: #FFB300;
+    --amber-urgent-hover: #FFA726;
+    --amber-glow: rgba(255, 179, 0, 0.4);
+    
+    /* Neutros - Modo Claro */
+    --neutral-bg: #F5F7FA;
+    --neutral-text: #1A1A2E;
+    --neutral-text-muted: #64748B;
+    --neutral-white: #FFFFFF;
+    
+    /* Sombras y efectos */
+    --shadow-eco: 0 4px 14px rgba(46, 204, 113, 0.25);
+    --shadow-amber: 0 4px 14px rgba(255, 179, 0, 0.3);
+  }
+
+  /* 🌙 Dark Mode Overrides */
+  .dark {
+    --neutral-bg: #121212;
+    --neutral-text: #F0F4F8;
+    --neutral-text-muted: #94A3B8;
+    --neutral-white: #1E293B;
+    
+    --shadow-eco: 0 4px 20px rgba(46, 204, 113, 0.4);
+    --shadow-amber: 0 4px 20px rgba(255, 179, 0, 0.5);
+  }
+
+  /* Base styles */
+  body {
+    @apply bg-neutral-bg text-neutral-text transition-colors duration-300;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* ========================================
+   🚀 COMPONENTES PERSUASIVOS
+   ======================================== */
+@layer components {
+  
+  /* 🔘 CTA PRIMARIO - Con animación de urgencia automática */
+  .btn-cta-primary {
+    @apply relative px-8 py-4 rounded-xl font-bold text-neutral-text 
+           bg-gradient-cta border-2 border-amber-urgent 
+           shadow-eco-glow hover:shadow-eco-glow-dark
+           transform transition-all duration-200
+           animate-pulse-urgent hover:animate-pulse-urgent-fast
+           focus:outline-none focus:ring-4 focus:ring-amber-urgent/50;
+  }
+  
+  .btn-cta-primary:hover {
+    @apply bg-gradient-to-r from-eco-primary-hover to-eco-primary 
+           border-amber-urgent-hover scale-105;
+  }
+  
+  .btn-cta-primary:active {
+    @apply scale-95;
+  }
+
+  /* 🔘 CTA SECUNDARIO - Información sin urgencia agresiva */
+  .btn-cta-secondary {
+    @apply px-6 py-3 rounded-lg font-semibold 
+           bg-neutral-white dark:bg-neutral-white/10 
+           text-eco-primary-dark dark:text-eco-primary
+           border-2 border-eco-primary-light 
+           hover:border-eco-primary hover:bg-eco-primary-light/30
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-eco-primary/50;
+  }
+
+  /* 🔘 CTA TEXTO - Navegación sutil */
+  .btn-cta-text {
+    @apply text-eco-primary-dark dark:text-eco-primary 
+           font-medium hover:underline decoration-amber-urgent 
+           decoration-2 underline-offset-4
+           transition-all duration-200;
+  }
+
+  /* 🔥 BADGE DE URGENCIA - Micro-copy persuasivo (PRO TIP) */
+  .badge-urgency {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 
+           rounded-full text-sm font-bold
+           bg-gradient-amber text-neutral-text
+           shadow-amber-glow animate-float
+           border border-amber-urgent-hover/50;
+  }
+  
+  .badge-urgency::before {
+    content: '';
+    @apply absolute inset-0 rounded-full opacity-0 
+           bg-shine-effect bg-[length:200%_100%]
+           animate-shine;
+  }
+
+  /* 🎴 TARJETA DE SERVICIO - Con hover persuasivo */
+  .card-service {
+    @apply bg-neutral-white dark:bg-neutral-white/5 
+           rounded-2xl p-6 border border-eco-primary-light/30
+           hover:border-eco-primary hover:shadow-eco-glow 
+           dark:hover:shadow-eco-glow-dark
+           transition-all duration-300 cursor-pointer
+           group;
+  }
+  
+  .card-service:hover .card-icon {
+    @apply bg-eco-primary text-neutral-white scale-110;
+  }
+
+  .card-icon {
+    @apply w-14 h-14 rounded-xl bg-eco-primary-light 
+           flex items-center justify-center 
+           text-eco-primary-dark font-bold text-xl
+           transition-all duration-300;
+  }
+
+  /* 📊 BARRA DE PROGRESO - Para mostrar "cupos restantes" */
+  .progress-urgency {
+    @apply h-2 rounded-full bg-neutral-bg dark:bg-neutral-white/10 
+           overflow-hidden relative;
+  }
+  
+  .progress-urgency-fill {
+    @apply h-full bg-gradient-amber rounded-full 
+           animate-pulse-urgent relative;
+  }
+  
+  .progress-urgency-fill::after {
+    content: '';
+    @apply absolute inset-0 bg-shine-effect bg-[length:200%_100%] 
+           animate-shine opacity-60;
+  }
+
+  /* 🌟 HERO SECTION - Gradiente profesional */
+  .hero-section {
+    @apply bg-gradient-header relative overflow-hidden;
+  }
+  
+  .hero-section::before {
+    content: '';
+    @apply absolute inset-0 bg-[url('/pattern-dots.svg')] 
+           opacity-10 dark:opacity-5;
+  }
+}
+
+/* ========================================
+   ✨ UTILIDADES PERSONALIZADAS
+   ======================================== */
+@layer utilities {
+  /* Texto con gradiente (para headlines impactantes) */
+  .text-gradient-eco {
+    @apply bg-clip-text text-transparent 
+           bg-gradient-to-r from-eco-primary to-eco-primary-hover;
+  }
+  
+  .text-gradient-amber {
+    @apply bg-clip-text text-transparent 
+           bg-gradient-to-r from-amber-urgent to-amber-urgent-hover;
+  }
+
+  /* Borde pulsante para elementos destacados */
+  .border-pulse-urgent {
+    @apply border-2 border-amber-urgent animate-pulse-urgent;
+  }
+
+  /* Efecto neón sutil (visible en claro y oscuro) */
+  .neon-eco {
+    @apply shadow-eco-glow dark:shadow-eco-glow-dark;
+  }
+  
+  .neon-amber {
+    @apply shadow-amber-glow;
+  }
+
+  /* Accesibilidad: foco visible en ambos modos */
+  .focus-ring-eco {
+    @apply focus:outline-none focus:ring-4 
+           focus:ring-eco-primary/50 dark:focus:ring-eco-primary/70;
+  }
+}
+
+/* ========================================
+   📱 RESPONSIVE & ACCESIBILIDAD
+   ======================================== */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-urgent,
+  .animate-pulse-urgent-fast,
+  .animate-shine,
+  .animate-float {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .btn-cta-primary:hover {
+    @apply scale-100;
+  }
+}
+
+/* High Contrast Mode support */
+@media (prefers-contrast: high) {
+  .btn-cta-primary {
+    @apply border-4 border-amber-urgent;
+  }
+  
+  .badge-urgency {
+    @apply border-2 border-neutral-text;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "@aa-mold-hunters/tailwind-config",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shared Tailwind CSS configuration",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "dependencies": {
+    "tailwindcss": "4.2.0"
+  },
+  "devDependencies": {
+    "@aa-mold-hunters/typescript-config": "workspace:*",
+    "typescript": "5.8.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

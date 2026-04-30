@@ -1,0 +1,39 @@
+{
+  "name": "aa-mold-hunters",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AA Mold Hunters - Full Stack Application with Turborepo",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "type-check": "turbo run type-check",
+    "db:generate": "turbo run db:generate",
+    "db:migrate": "turbo run db:migrate",
+    "db:push": "turbo run db:push",
+    "db:studio": "turbo run db:studio",
+    "db:seed": "turbo run db:seed",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "prepare": "husky",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@types/minimatch": "5",
+    "husky": "9.1.7",
+    "lint-staged": "15.5.1",
+    "prettier": "3.6.2",
+    "turbo": "2.7.5",
+    "typescript": "5.8.2"
+  },
+  "packageManager": "pnpm@10.8.0",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}

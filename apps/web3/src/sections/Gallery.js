@@ -1,0 +1,11 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+export function Gallery() {
+    const containerRef = useScrollAnimation();
+    return (_jsx("section", { id: "gallery", ref: containerRef, className: "relative py-20 md:py-32 bg-gradient-to-b from-tech-navy to-tech-slate overflow-hidden", children: _jsx("div", { className: "relative z-10 w-full px-4 sm:px-6 lg:px-8 xl:px-12", children: _jsxs("div", { className: "max-w-7xl mx-auto", children: [_jsxs("div", { className: "text-center mb-16", "data-animate": "fade-up", children: [_jsx("span", { className: "text-eco-primary font-semibold text-sm uppercase tracking-wider", children: "Our Work" }), _jsxs("h2", { className: "mt-4 text-3xl md:text-4xl lg:text-5xl font-bold text-white", children: ["Before & ", _jsx("span", { className: "text-eco-primary", children: "After" })] }), _jsx("p", { className: "mt-4 text-white/60 max-w-2xl mx-auto text-lg", children: "See the transformation. Real results from real South Florida homes." })] }), _jsx("div", { className: "grid md:grid-cols-3 gap-6", "data-animate": "stagger", children: [
+                            { img: '/images/before-after-1.jpg', title: 'Coral Springs Home' },
+                            { img: '/images/before-after-2.jpg', title: 'Miami Condo' },
+                            { img: '/images/before-after-3.jpg', title: 'Hollywood House' },
+                        ].map((item, i) => (_jsxs("div", { className: "glass-card overflow-hidden", children: [_jsxs("div", { className: "relative", children: [_jsx("img", { src: item.img, alt: `${item.title}`, className: "w-full h-64 object-cover" }), _jsx("div", { className: "absolute top-4 left-4 px-3 py-1 bg-eco-primary text-white text-xs font-bold rounded-full", children: "COMPLETED" })] }), _jsxs("div", { className: "p-4", children: [_jsx("h3", { className: "text-white font-semibold", children: item.title }), _jsx("p", { className: "text-white/60 text-sm mt-1", children: "Mold Remediation Complete" })] })] }, i))) })] }) }) }));
+}
+//# sourceMappingURL=Gallery.js.map

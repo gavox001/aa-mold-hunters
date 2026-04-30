@@ -1,0 +1,18 @@
+{
+  "extends": "./packages/typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@aamold-hunter/*": ["./packages/*/src"]
+    }
+  },
+  "include": [],
+  "exclude": ["node_modules", "dist", ".next", "build"],
+  "references": [
+    { "path": "./packages/database" },
+    { "path": "./packages/ui" },
+    { "path": "./packages/eslint-config" },
+    { "path": "./packages/typescript-config" },
+    { "path": "./packages/tailwind-config" }
+  ]
+}

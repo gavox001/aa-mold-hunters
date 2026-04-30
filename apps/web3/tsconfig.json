@@ -1,0 +1,14 @@
+{
+  "extends": "@aamold-hunter/typescript-config/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "jsx": "react-jsx",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "skipLibCheck": true
+  },
+  "include": ["src", "vite.config.ts", "src/vite-env.d.ts"],
+  "exclude": ["node_modules", "dist"]
+}
